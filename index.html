@@ -1,0 +1,1018 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>경예은 CRM Portfolio</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<style>
+:root{
+  --cream:#FFFDD0;--cream-dk:#F0EBA8;--cream-deep:#C8B830;
+  --green:#355E3B;--gl:#4A7C52;--gd:#1E3D22;
+  --gp:#D4E6D6;--ink:#1A2A1C;--gray:#7A8C7B;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{font-family:'Pretendard',sans-serif;background:var(--cream);color:var(--ink);overflow-x:hidden;}
+
+/* ══ NAV ══ */
+nav{position:fixed;top:0;left:0;right:0;z-index:300;display:flex;align-items:center;justify-content:space-between;padding:16px 60px;background:rgba(30,61,34,.97);backdrop-filter:blur(12px);}
+.nav-logo{font-size:17px;font-weight:800;color:var(--cream);letter-spacing:2px;}
+.nav-links{display:flex;gap:24px;list-style:none;}
+.nav-links a{font-size:11px;font-weight:600;color:rgba(255,253,208,.5);text-decoration:none;letter-spacing:1.5px;text-transform:uppercase;transition:color .2s;}
+.nav-links a:hover{color:var(--cream);}
+
+/* ══ HERO ══ */
+#hero{min-height:100vh;background:var(--gd);display:flex;align-items:center;padding:120px 10vw 80px;position:relative;overflow:hidden;}
+#hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 60% 50% at 80% 50%,rgba(53,94,59,.5) 0%,transparent 70%);pointer-events:none;}
+.h-arc{position:absolute;border-radius:50%;border:1px solid rgba(255,253,208,.06);pointer-events:none;}
+.a1{width:600px;height:600px;right:-150px;top:-100px;}
+.a2{width:900px;height:900px;right:-350px;top:-300px;}
+.hc{position:relative;z-index:2;max-width:720px;}
+.hbadge{display:inline-flex;align-items:center;gap:10px;background:rgba(255,253,208,.07);border:1px solid rgba(255,253,208,.16);padding:6px 18px 6px 8px;margin-bottom:32px;}
+.hbadge .dot{width:7px;height:7px;background:var(--cream-deep);border-radius:50%;}
+.hbadge span{font-size:10px;font-weight:700;letter-spacing:3px;color:var(--cream);text-transform:uppercase;}
+.hname{font-size:clamp(56px,9vw,112px);font-weight:900;color:var(--cream);line-height:.92;letter-spacing:-2px;}
+.hname em{color:var(--cream-deep);font-style:normal;display:block;}
+.hrule{width:80px;height:2px;background:linear-gradient(to right,var(--cream-deep),transparent);margin:24px 0;}
+.hsub{font-size:15px;line-height:1.9;color:rgba(255,253,208,.55);max-width:460px;}
+.hsub strong{color:var(--cream);font-weight:700;}
+.hstats{display:flex;margin-top:48px;border:1px solid rgba(255,253,208,.1);}
+.stat{flex:1;padding:22px 24px;border-right:1px solid rgba(255,253,208,.1);}
+.stat:last-child{border-right:none;}
+.stat .n{font-size:40px;font-weight:800;color:var(--cream);line-height:1;}
+.stat .n small{font-size:20px;}
+.stat .l{font-size:10px;color:rgba(255,253,208,.33);letter-spacing:2px;text-transform:uppercase;margin-top:5px;}
+
+/* ══ SECTION ══ */
+section{padding:96px 10vw;}
+.sl{font-size:10px;font-weight:700;letter-spacing:4px;color:var(--green);text-transform:uppercase;margin-bottom:8px;display:flex;align-items:center;gap:12px;}
+.sl::before{content:'';display:block;width:22px;height:1px;background:var(--green);}
+.st{font-size:clamp(34px,4.5vw,58px);font-weight:900;line-height:1;color:var(--ink);margin-bottom:48px;}
+.st em{color:var(--green);font-style:normal;}
+.dsec{background:var(--gd);}
+.dsec .sl{color:var(--cream-deep);}
+.dsec .sl::before{background:var(--cream-deep);}
+.dsec .st{color:var(--cream);}
+.dsec .st em{color:var(--cream-deep);}
+.msec{background:var(--green);}
+.msec .sl{color:var(--cream-deep);}
+.msec .sl::before{background:var(--cream-deep);}
+.msec .st{color:var(--cream);}
+.msec .st em{color:var(--cream-deep);}
+
+/* ══ ACCORDION ══ */
+.acc-wrap{overflow:hidden;}
+/* dark accordion */
+.acc-btn{width:100%;display:flex;align-items:center;justify-content:space-between;padding:11px 16px;background:rgba(255,253,208,.05);border:none;border-top:1px solid rgba(255,253,208,.08);cursor:pointer;transition:background .2s;text-align:left;}
+.acc-btn:hover{background:rgba(255,253,208,.1);}
+.acc-btn .abl{font-size:11px;font-weight:700;letter-spacing:1px;color:rgba(255,253,208,.55);display:flex;align-items:center;gap:8px;}
+.acc-btn .abl::before{content:'';width:12px;height:1px;background:var(--cream-deep);display:block;}
+.acc-btn .arr{font-size:10px;color:var(--cream-deep);transition:transform .3s;}
+.acc-btn.open .arr{transform:rotate(180deg);}
+.acc-body{display:none;padding:20px 20px 22px;background:rgba(0,0,0,.15);border-top:1px solid rgba(255,253,208,.05);}
+.acc-body.open{display:block;}
+/* light accordion */
+.acc-btn-l{width:100%;display:flex;align-items:center;justify-content:space-between;padding:11px 16px;background:rgba(53,94,59,.05);border:none;border-top:1px solid rgba(53,94,59,.12);cursor:pointer;transition:background .2s;text-align:left;}
+.acc-btn-l:hover{background:rgba(53,94,59,.1);}
+.acc-btn-l .abl{font-size:11px;font-weight:700;letter-spacing:1px;color:var(--gl);display:flex;align-items:center;gap:8px;}
+.acc-btn-l .abl::before{content:'';width:12px;height:1px;background:var(--green);display:block;}
+.acc-btn-l .arr{font-size:10px;color:var(--green);transition:transform .3s;}
+.acc-btn-l.open .arr{transform:rotate(180deg);}
+.acc-body-l{display:none;padding:20px 20px 22px;background:rgba(53,94,59,.04);border-top:1px solid rgba(53,94,59,.07);}
+.acc-body-l.open{display:block;}
+/* acc body shared */
+.acc-body p,.acc-body-l p{font-size:13px;line-height:1.85;margin-bottom:12px;}
+.acc-body p{color:rgba(255,253,208,.58);}
+.acc-body-l p{color:#4A5C4B;}
+.acc-body ul,.acc-body-l ul{list-style:none;}
+.acc-body ul li{font-size:12px;padding:6px 0;border-bottom:1px solid rgba(255,253,208,.05);line-height:1.65;color:rgba(255,253,208,.6);}
+.acc-body-l ul li{font-size:12px;padding:6px 0;border-bottom:1px solid rgba(53,94,59,.07);line-height:1.65;color:#4A5C4B;}
+.acc-body ul li:last-child,.acc-body-l ul li:last-child{border-bottom:none;}
+.acc-body ul li::before{content:'· ';color:var(--cream-deep);font-weight:700;}
+.acc-body-l ul li::before{content:'· ';color:var(--green);font-weight:700;}
+.acc-body ul li b{color:var(--cream);}
+.acc-body-l ul li b{color:var(--gd);}
+.acc-note{margin-top:14px;padding:10px 14px;font-size:12px;font-weight:700;border-left:3px solid;line-height:1.6;}
+.acc-note-d{background:rgba(255,253,208,.05);border-color:var(--cream-deep);color:var(--cream-deep);}
+.acc-note-l{background:rgba(53,94,59,.06);border-color:var(--green);color:var(--green);}
+/* acc table */
+.atbl{width:100%;border-collapse:collapse;margin:10px 0;}
+.atbl th{font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:8px 10px;text-align:left;}
+.atbl td{font-size:12px;padding:9px 10px;line-height:1.6;vertical-align:top;}
+.atbl td:first-child{font-weight:700;width:120px;}
+.atbl-d th{background:rgba(255,253,208,.05);color:rgba(255,253,208,.4);}
+.atbl-d td{color:rgba(255,253,208,.6);border-bottom:1px solid rgba(255,253,208,.05);}
+.atbl-d td:first-child{color:var(--cream-deep);}
+.atbl-l th{background:rgba(53,94,59,.05);color:var(--gray);}
+.atbl-l td{color:#4A5C4B;border-bottom:1px solid rgba(53,94,59,.07);}
+.atbl-l td:first-child{color:var(--green);}
+
+/* ══ MODAL ══ */
+.moverlay{display:none;position:fixed;inset:0;z-index:500;background:rgba(10,20,12,.78);backdrop-filter:blur(6px);align-items:center;justify-content:center;padding:24px;}
+.moverlay.on{display:flex;}
+.mbox{width:100%;max-width:880px;max-height:88vh;overflow-y:auto;position:relative;animation:mIn .25s ease;}
+@keyframes mIn{from{opacity:0;transform:translateY(18px);}to{opacity:1;transform:translateY(0);}}
+.mbox-l{background:var(--cream);}
+.mbox-d{background:var(--gd);}
+.mhead{padding:30px 40px 22px;display:flex;align-items:flex-start;justify-content:space-between;gap:20px;position:sticky;top:0;z-index:10;}
+.mbox-l .mhead{background:var(--cream);border-bottom:1px solid rgba(53,94,59,.1);}
+.mbox-d .mhead{background:var(--gd);border-bottom:1px solid rgba(255,253,208,.08);}
+.mtag{font-size:10px;font-weight:700;letter-spacing:3px;text-transform:uppercase;margin-bottom:5px;}
+.mbox-l .mtag{color:var(--green);}
+.mbox-d .mtag{color:var(--cream-deep);}
+.mh2{font-size:clamp(18px,2.5vw,26px);font-weight:900;line-height:1.2;}
+.mbox-l .mh2{color:var(--ink);}
+.mbox-d .mh2{color:var(--cream);}
+.mclose{flex-shrink:0;width:34px;height:34px;border:none;cursor:pointer;font-size:16px;display:flex;align-items:center;justify-content:center;transition:background .2s;}
+.mbox-l .mclose{background:rgba(53,94,59,.08);color:var(--green);}
+.mbox-d .mclose{background:rgba(255,253,208,.08);color:var(--cream);}
+.mbox-l .mclose:hover{background:rgba(53,94,59,.16);}
+.mbox-d .mclose:hover{background:rgba(255,253,208,.15);}
+.mbody{padding:28px 40px 40px;}
+.mbody p{font-size:13px;line-height:1.9;margin-bottom:14px;}
+.mbox-l .mbody p{color:#4A5C4B;}
+.mbox-d .mbody p{color:rgba(255,253,208,.58);}
+.mbody p strong,.mbody p b{font-weight:700;}
+.mbox-l .mbody p strong{color:var(--gd);}
+.mbox-d .mbody p strong{color:var(--cream);}
+/* modal grid */
+.mg3{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-bottom:24px;}
+.mg2{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-bottom:24px;}
+.mc h4{font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;padding-bottom:8px;border-bottom:1px solid;margin-bottom:12px;}
+.mbox-l .mc h4{color:var(--green);border-color:rgba(53,94,59,.15);}
+.mbox-d .mc h4{color:var(--cream-deep);border-color:rgba(255,253,208,.1);}
+.mc ul{list-style:none;}
+.mc ul li{font-size:12px;padding:5px 0;border-bottom:1px solid;line-height:1.65;}
+.mbox-l .mc ul li{color:#4A5C4B;border-color:rgba(53,94,59,.07);}
+.mbox-d .mc ul li{color:rgba(255,253,208,.56);border-color:rgba(255,253,208,.04);}
+.mc ul li:last-child{border-bottom:none;}
+.mc ul li::before{content:'· ';font-weight:700;}
+.mbox-l .mc ul li::before{color:var(--green);}
+.mbox-d .mc ul li::before{color:var(--cream-deep);}
+.mc ul li b{font-weight:700;}
+.mbox-l .mc ul li b{color:var(--gd);}
+.mbox-d .mc ul li b{color:var(--cream);}
+/* modal note */
+.mnote{padding:13px 16px;font-size:12px;font-weight:700;line-height:1.6;border-left:3px solid;margin-top:18px;}
+.mbox-l .mnote{background:rgba(53,94,59,.06);border-color:var(--green);color:var(--green);}
+.mbox-d .mnote{background:rgba(255,253,208,.05);border-color:var(--cream-deep);color:var(--cream-deep);}
+/* modal divider */
+.mdiv{height:1px;margin:22px 0;}
+.mbox-l .mdiv{background:rgba(53,94,59,.1);}
+.mbox-d .mdiv{background:rgba(255,253,208,.07);}
+.msec-title{font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;margin-bottom:12px;}
+.mbox-l .msec-title{color:var(--green);}
+.mbox-d .msec-title{color:var(--cream-deep);}
+/* modal table */
+.mtbl{width:100%;border-collapse:collapse;margin:10px 0;}
+.mtbl th{font-size:10px;font-weight:700;letter-spacing:1px;padding:9px 12px;text-align:left;text-transform:uppercase;}
+.mtbl td{font-size:12px;padding:9px 12px;line-height:1.6;vertical-align:top;}
+.mtbl td:first-child{font-weight:700;}
+.mbox-l .mtbl th{background:rgba(53,94,59,.05);color:var(--gray);}
+.mbox-l .mtbl td{color:#4A5C4B;border-bottom:1px solid rgba(53,94,59,.07);}
+.mbox-l .mtbl td:first-child{color:var(--green);}
+.mbox-d .mtbl th{background:rgba(255,253,208,.05);color:rgba(255,253,208,.4);}
+.mbox-d .mtbl td{color:rgba(255,253,208,.6);border-bottom:1px solid rgba(255,253,208,.05);}
+.mbox-d .mtbl td:first-child{color:var(--cream-deep);}
+/* message bubbles */
+.msg-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:12px 0;}
+.msgc{padding:13px 15px;}
+.msgc-d{background:rgba(255,253,208,.05);border-left:3px solid rgba(255,253,208,.22);}
+.msgc-l{background:rgba(53,94,59,.05);border-left:3px solid var(--gl);}
+.msgt{font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;margin-bottom:5px;}
+.msgc-d .msgt{color:var(--cream-deep);}
+.msgc-l .msgt{color:var(--green);}
+.msgc-d p{font-size:11px;color:rgba(255,253,208,.52);line-height:1.7;margin:0;}
+.msgc-l p{font-size:11px;color:#4A5C4B;line-height:1.7;margin:0;}
+
+/* ══ TIMELINE ══ */
+.tlgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;}
+.tlc{background:rgba(255,253,208,.04);border:1px solid rgba(255,253,208,.08);position:relative;overflow:hidden;transition:background .25s;}
+.tlc.hl{border-color:rgba(255,253,208,.2);}
+.tlc:hover{background:rgba(255,253,208,.07);}
+.tlci{padding:30px 24px 16px;}
+.bign{position:absolute;top:8px;right:12px;font-size:68px;font-weight:900;color:rgba(255,253,208,.03);line-height:1;pointer-events:none;}
+.tper{font-size:10px;letter-spacing:2px;color:var(--cream-deep);margin-bottom:7px;text-transform:uppercase;}
+.tlc h3{font-size:14px;font-weight:700;color:var(--cream);margin-bottom:9px;line-height:1.4;}
+.tldesc{font-size:12px;line-height:1.8;color:rgba(255,253,208,.38);}
+.tlres{margin:10px 0 0;font-size:11px;font-weight:700;color:var(--cream-deep);display:flex;align-items:center;gap:5px;}
+.tlres::before{content:'→';}
+
+/* ══ PERSONA ══ */
+.pwrap{display:grid;grid-template-columns:1fr 1fr;gap:28px;margin-bottom:40px;}
+.pc{background:var(--gp);position:relative;overflow:hidden;padding:34px 30px 52px;cursor:pointer;transition:transform .2s,box-shadow .2s;}
+.pc::after{content:'';position:absolute;top:0;left:0;width:100%;height:4px;background:var(--green);}
+.pc:hover{transform:translateY(-4px);box-shadow:0 12px 40px rgba(53,94,59,.18);}
+.pname{font-size:24px;font-weight:900;color:var(--gd);margin-bottom:4px;}
+.pinfo{font-size:12px;color:var(--gray);margin-bottom:14px;}
+.ptags{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:14px;}
+.ptag{font-size:10px;font-weight:700;letter-spacing:1px;padding:4px 12px;text-transform:uppercase;}
+.pg{background:var(--green);color:var(--cream);}
+.pc2{background:var(--gd);color:var(--cream);}
+.pl{border:1px solid var(--green);color:var(--green);}
+.pdesc{font-size:13px;line-height:1.85;color:#4A5C4B;}
+.pinsight{display:grid;grid-template-columns:repeat(5,1fr);background:var(--gd);}
+.iitem{padding:28px 20px;border-right:1px solid rgba(255,253,208,.07);text-align:center;}
+.iitem:last-child{border-right:none;}
+.iitem .iv{font-size:30px;font-weight:800;color:var(--cream-deep);line-height:1;}
+.iitem .ik{font-size:10px;letter-spacing:1.5px;color:rgba(255,253,208,.3);text-transform:uppercase;margin-top:5px;}
+
+/* ══ AARRR ══ */
+.asteps{display:grid;grid-template-columns:repeat(5,1fr);margin-bottom:3px;}
+.astep{padding:24px 16px;background:var(--gd);border-right:1px solid rgba(255,253,208,.06);cursor:pointer;transition:background .2s;}
+.astep:last-child{border-right:none;}
+.astep:hover,.astep.on{background:var(--green);}
+.astep .sl2{font-size:26px;font-weight:900;color:rgba(255,253,208,.14);transition:color .2s;}
+.astep:hover .sl2,.astep.on .sl2{color:var(--cream-deep);}
+.astep .sn{font-size:12px;font-weight:700;color:rgba(255,253,208,.32);margin-top:3px;transition:color .2s;}
+.astep:hover .sn,.astep.on .sn{color:var(--cream);}
+.astep .ss{font-size:10px;color:rgba(255,253,208,.18);margin-top:4px;transition:color .2s;}
+.astep:hover .ss,.astep.on .ss{color:rgba(255,253,208,.48);}
+.acols{display:grid;grid-template-columns:repeat(5,1fr);gap:2px;}
+.acol{background:var(--cream);border-top:3px solid var(--green);overflow:hidden;}
+.acol:nth-child(2){border-color:#2d5433;}
+.acol:nth-child(3){border-color:#3d6843;}
+.acol:nth-child(4){border-color:#4a7c52;}
+.acol:nth-child(5){border-color:#5a9063;}
+.acoli{padding:22px 16px 12px;}
+.acol h4{font-size:12px;font-weight:700;color:var(--gd);margin-bottom:11px;}
+.acol ul{list-style:none;}
+.acol ul li{font-size:11px;color:#4A5C4B;padding:4px 0;border-bottom:1px solid var(--cream-dk);line-height:1.6;}
+.acol ul li::before{content:'· ';color:var(--green);font-weight:900;}
+.achip{margin:10px 0 10px;background:var(--green);color:var(--cream);font-size:10px;font-weight:700;padding:4px 10px;letter-spacing:1px;display:inline-block;}
+
+/* ══ SEGMENTATION ══ */
+.sgrid{display:grid;grid-template-columns:1fr 1fr;gap:3px;}
+.son{background:var(--gd);padding:42px 34px 54px;position:relative;overflow:hidden;cursor:pointer;transition:opacity .2s;}
+.soff{background:var(--cream);border:1px solid var(--cream-dk);padding:42px 34px 54px;position:relative;overflow:hidden;cursor:pointer;transition:background .2s;}
+.son:hover{opacity:.88;}
+.soff:hover{background:#EFF7EF;}
+.sbadge{display:inline-block;font-size:9px;font-weight:800;letter-spacing:3px;padding:4px 12px;margin-bottom:14px;text-transform:uppercase;}
+.son .sbadge{background:var(--cream-deep);color:var(--gd);}
+.soff .sbadge{background:var(--green);color:var(--cream);}
+.son h3{color:var(--cream);font-size:18px;font-weight:900;margin-bottom:6px;}
+.soff h3{color:var(--gd);font-size:18px;font-weight:900;margin-bottom:6px;}
+.sdesc{font-size:13px;line-height:1.7;margin-bottom:18px;}
+.son .sdesc{color:rgba(255,253,208,.38);}
+.soff .sdesc{color:var(--gray);}
+.stbl{width:100%;border-collapse:collapse;}
+.stbl tr{border-bottom:1px solid rgba(255,253,208,.07);}
+.soff .stbl tr{border-color:#E0DCAA;}
+.stbl td{padding:10px 8px;font-size:12px;line-height:1.6;vertical-align:top;}
+.stbl td:first-child{font-weight:700;width:90px;}
+.son .stbl td:first-child{color:var(--cream-deep);}
+.soff .stbl td:first-child{color:var(--green);}
+.son .stbl td:last-child{color:rgba(255,253,208,.58);}
+.soff .stbl td:last-child{color:#4A5C4B;}
+.click-lbl{position:absolute;bottom:16px;right:20px;font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;display:flex;align-items:center;gap:6px;opacity:.5;transition:opacity .2s;}
+.click-lbl::before{content:'';width:14px;height:1px;}
+.son .click-lbl{color:var(--cream-deep);}
+.son .click-lbl::before{background:var(--cream-deep);}
+.soff .click-lbl{color:var(--green);}
+.soff .click-lbl::before{background:var(--green);}
+.son:hover .click-lbl,.soff:hover .click-lbl{opacity:1;}
+
+/* ══ JOURNEY ══ */
+.jscroll{overflow-x:auto;padding-bottom:12px;}
+.jtbl{min-width:950px;width:100%;border-collapse:collapse;}
+.jtbl th{background:var(--gd);color:var(--cream);font-size:12px;font-weight:700;padding:13px 11px;text-align:center;border-right:1px solid rgba(255,253,208,.06);}
+.jtbl th.jhl{background:var(--green);}
+.jtbl td{padding:12px 10px;font-size:11px;line-height:1.75;background:var(--cream);border:1px solid var(--cream-dk);vertical-align:top;color:#4A5C4B;}
+.jtbl tr td:first-child{font-weight:700;font-size:12px;color:var(--gd);background:var(--gp);text-align:center;width:66px;}
+.emr td{text-align:center;font-size:18px;background:var(--cream);border:1px solid var(--cream-dk);}
+.emr td:first-child{background:var(--gp);font-size:12px;font-weight:700;color:var(--gd);}
+.chip{background:var(--green);color:var(--cream);font-size:9px;font-weight:700;padding:2px 7px;display:inline-block;margin:2px 2px 0 0;}
+/* journey phase cards */
+.jphases{display:grid;grid-template-columns:repeat(4,1fr);gap:2px;margin-top:24px;}
+.jpc{padding:20px 18px 46px;background:rgba(255,253,208,.04);border:1px solid rgba(255,253,208,.08);cursor:pointer;position:relative;overflow:hidden;transition:background .2s;}
+.jpc:hover{background:rgba(255,253,208,.09);}
+.jpc .ji{font-size:22px;margin-bottom:8px;}
+.jpc h4{font-size:13px;font-weight:700;color:var(--cream);margin-bottom:4px;}
+.jpc p{font-size:11px;color:rgba(255,253,208,.38);line-height:1.5;}
+
+/* ══ RESULTS ══ */
+.rgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;margin-bottom:4px;}
+.rc{padding:34px 26px;background:rgba(255,253,208,.04);border:1px solid rgba(255,253,208,.07);transition:background .22s;}
+.rc:hover{background:rgba(255,253,208,.08);}
+.rc .ri{font-size:24px;margin-bottom:13px;}
+.rc .rl{font-size:10px;font-weight:700;letter-spacing:3px;color:rgba(255,253,208,.32);text-transform:uppercase;margin-bottom:7px;}
+.rc .rb{font-size:52px;font-weight:800;color:var(--cream);line-height:1;}
+.rc .rb em{color:var(--cream-deep);font-style:normal;font-size:26px;}
+.rc .rd{font-size:11px;color:rgba(255,253,208,.35);margin-top:7px;line-height:1.7;}
+.bbox{background:rgba(255,253,208,.03);border:1px solid rgba(255,253,208,.07);padding:42px;}
+.btitle{font-size:10px;letter-spacing:3px;color:rgba(255,253,208,.25);text-transform:uppercase;margin-bottom:28px;}
+.bcmp{display:grid;grid-template-columns:1fr 1fr;gap:48px;}
+.byr{font-size:12px;font-weight:700;color:rgba(255,253,208,.3);letter-spacing:2px;margin-bottom:13px;}
+.brow{display:flex;align-items:center;gap:12px;margin-bottom:8px;}
+.brow .bn{font-size:10px;color:rgba(255,253,208,.28);min-width:76px;text-align:right;}
+.btrack{flex:1;height:22px;background:rgba(255,253,208,.04);position:relative;overflow:hidden;}
+.bfill{height:100%;position:absolute;left:0;top:0;}
+.bg1{background:rgba(53,94,59,.8);}
+.bg2{background:rgba(74,124,82,.65);}
+.bc{background:rgba(255,253,208,.28);}
+.bpct{position:absolute;right:6px;top:50%;transform:translateY(-50%);font-size:10px;font-weight:700;color:rgba(255,253,208,.62);}
+
+/* ══ EXTRA ══ */
+.egrid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+.ec{background:var(--gp);position:relative;overflow:hidden;border-bottom:3px solid var(--green);transition:transform .2s;}
+.ec:hover{transform:translateY(-3px);}
+.eci{padding:30px 24px 12px;}
+.ecbg{position:absolute;bottom:-10px;right:5px;font-size:86px;font-weight:900;color:rgba(53,94,59,.06);line-height:1;pointer-events:none;}
+.ec .ep{display:inline-block;background:var(--green);color:var(--cream);font-size:9px;font-weight:700;padding:3px 10px;letter-spacing:1px;margin-bottom:11px;}
+.ec h3{font-size:15px;font-weight:900;color:var(--gd);margin-bottom:11px;}
+.ec ul{list-style:none;}
+.ec ul li{font-size:12px;color:#4A5C4B;padding:4px 0;border-bottom:1px solid #C4D8C5;line-height:1.6;}
+.ec ul li::before{content:'· ';color:var(--green);font-weight:900;}
+.ecres{margin-top:12px;margin-bottom:0;padding:10px 14px;background:var(--green);font-size:11px;color:var(--cream);font-weight:700;line-height:1.6;}
+
+/* ══ FOOTER ══ */
+footer{background:var(--gd);padding:58px 10vw;display:flex;align-items:center;justify-content:space-between;border-top:1px solid rgba(255,253,208,.07);}
+.ftname{font-size:38px;font-weight:900;color:var(--cream);line-height:1.1;}
+.ftname em{color:var(--cream-deep);font-style:normal;}
+.ftr{text-align:right;}
+.ftsub{font-size:12px;font-weight:700;color:var(--cream-deep);margin-bottom:7px;letter-spacing:1px;}
+.ftr p{font-size:11px;color:rgba(255,253,208,.26);line-height:1.9;}
+
+/* ══ FADE ══ */
+.fi{opacity:0;transform:translateY(22px);transition:opacity .6s ease,transform .6s ease;}
+.fi.vis{opacity:1;transform:translateY(0);}
+
+@media(max-width:900px){
+  nav{padding:14px 20px;}.nav-links{display:none;}
+  section{padding:68px 5vw;}
+  .tlgrid,.asteps,.acols,.pwrap,.sgrid,.rgrid,.egrid,.bcmp,.mg3,.mg2,.jphases,.msg-grid{grid-template-columns:1fr;}
+  .pinsight{grid-template-columns:repeat(3,1fr);}
+  footer{flex-direction:column;gap:22px;}.ftr{text-align:left;}
+  .mbody{padding:22px 20px 30px;}.mhead{padding:22px 20px 18px;}
+}
+</style>
+</head>
+<body>
+
+<!-- ══════ MODAL ══════ -->
+<div class="moverlay" id="mo" onclick="mClose(event)">
+  <div class="mbox" id="mb">
+    <div class="mhead">
+      <div><div class="mtag" id="mtag"></div><h2 class="mh2" id="mttl"></h2></div>
+      <button class="mclose" onclick="closeM()">✕</button>
+    </div>
+    <div class="mbody" id="mcont"></div>
+  </div>
+</div>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">KYE · CRM</div>
+  <ul class="nav-links">
+    <li><a href="#hero">홈</a></li>
+    <li><a href="#timeline">경력</a></li>
+    <li><a href="#persona">페르소나</a></li>
+    <li><a href="#aarrr">AARRR</a></li>
+    <li><a href="#seg">세그먼테이션</a></li>
+    <li><a href="#journey">고객여정</a></li>
+    <li><a href="#results">성과</a></li>
+    <li><a href="#extra">기타</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="h-arc a1"></div><div class="h-arc a2"></div>
+  <div class="hc">
+    <div class="hbadge"><div class="dot"></div><span>CRM Marketer Portfolio</span></div>
+    <h1 class="hname">경예은<em>Portfolio</em></h1>
+    <div class="hrule"></div>
+    <p class="hsub">5년 6개월간 시계 브랜드 <strong>커스벤</strong>에서<br>고객 페르소나 설계부터 AARRR 전략 실행,<br>데이터 기반 CRM 마케팅을 직접 기획·실행했습니다.</p>
+    <div class="hstats">
+      <div class="stat"><div class="n">10<small>×</small></div><div class="l">자사몰 매출 상승</div></div>
+      <div class="stat"><div class="n">1<small>억+</small></div><div class="l">첫 펀딩 매출</div></div>
+      <div class="stat"><div class="n">1,300<small>+</small></div><div class="l">고객 피드백</div></div>
+      <div class="stat"><div class="n">75<small>%</small></div><div class="l">반복문의 감소</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════ TIMELINE ══════ -->
+<section id="timeline" class="dsec">
+  <div class="sl">Work History</div>
+  <h2 class="st">5년 6개월 <em>업무 흐름표</em></h2>
+  <div class="tlgrid fi">
+
+    <!-- 01 -->
+    <div class="tlc acc-wrap">
+      <div class="tlci"><div class="bign">01</div>
+        <div class="tper">2019.06 – 2020.05</div>
+        <h3>블로그 & 네이버 광고</h3>
+        <p class="tldesc">CUSVEN.COM 제작 후 블로그·인스타·네이버 광고로 유입 전략 수립.</p>
+        <div class="tlres">유입 경로 다각화 필요성 발견</div>
+      </div>
+      <button class="acc-btn" onclick="togA(this)"><span class="abl">세부 내용 보기</span><span class="arr">▼</span></button>
+      <div class="acc-body">
+        <p>브랜드 신뢰성이 낮고 광고도 없었던 것이 원인. 다양한 채널을 동시 운영했지만 효과가 제한적이었습니다.</p>
+        <ul>
+          <li><b>역할</b> — 블로그 키워드 추출, 인스타·네이버광고 집행</li>
+          <li><b>한계</b> — 블로그 상위노출까지 시간 소요, 네이버광고 전환율 낮음</li>
+          <li><b>한계</b> — 신뢰도 없는 상태에서 트래픽만으로 전환 어려움</li>
+          <li><b>배움</b> — 페르소나 정의 없이 광고는 무의미하다는 것 인식</li>
+        </ul>
+        <div class="acc-note acc-note-d">→ 이 실패가 고객 페르소나 중심 마케팅으로 전환하는 첫 계기</div>
+      </div>
+    </div>
+
+    <!-- 02 -->
+    <div class="tlc acc-wrap">
+      <div class="tlci"><div class="bign">02</div>
+        <div class="tper">2020.08 – 2024.01</div>
+        <h3>와디즈 크라우드펀딩 PM 서포트</h3>
+        <p class="tldesc">우리 고객이 있는 곳으로 이동. 사전판매로 재고 부담 낮추고 단기 매출 달성.</p>
+        <div class="tlres">첫 펀딩 1억+ · 총 10차례 진행</div>
+      </div>
+      <button class="acc-btn" onclick="togA(this)"><span class="abl">세부 내용 보기</span><span class="arr">▼</span></button>
+      <div class="acc-body">
+        <ul>
+          <li><b>역할</b> — CS, 쇼룸 운영, 배송, 시계 생산 담당, 정산</li>
+          <li><b>성과</b> — 첫 펀딩 1억+ 달성, 총 10차례 진행</li>
+          <li><b>카피 효과</b> — 7차 2,418만원 → 8차 카피 변경만으로 3,725만원 (+1,307만원)</li>
+          <li><b>배움</b> — 1,300건+ 피드백 수집으로 페르소나 구체화</li>
+          <li><b>한계</b> — 정산 지연·플랫폼 데이터 한계 → 자사 사이트 필요성 인식</li>
+        </ul>
+        <div class="acc-note acc-note-d">→ 카피라이팅 하나로 동일 제품 +1,307만원 — 카피의 힘을 몸소 체감</div>
+      </div>
+    </div>
+
+    <!-- 03 -->
+    <div class="tlc acc-wrap">
+      <div class="tlci"><div class="bign">03</div>
+        <div class="tper">2021.01 – 2021.11</div>
+        <h3>해외 크라우드펀딩</h3>
+        <p class="tldesc">젝젝(대만), 마쿠아케(일본), 킥스타터(미국) 3개국 펀딩 진행.</p>
+        <div class="tlres">자사 사이트 필요성 강하게 인식</div>
+      </div>
+      <button class="acc-btn" onclick="togA(this)"><span class="abl">세부 내용 보기</span><span class="arr">▼</span></button>
+      <div class="acc-body">
+        <ul>
+          <li><b>역할</b> — PM 서포트, 수출·통관·배송·정산 담당</li>
+          <li><b>진행</b> — 젝젝(대만), 마쿠아케(일본), 킥스타터(미국)</li>
+          <li><b>한계</b> — 노력 대비 매출 기대 미달, 정산 지연</li>
+          <li><b>한계</b> — 플랫폼 소유 데이터 → 고객 데이터 직접 보유 불가</li>
+        </ul>
+        <div class="acc-note acc-note-d">→ 고객 데이터 직접 보유 가능한 자사 사이트 구축 결심의 직접 계기</div>
+      </div>
+    </div>
+
+    <!-- 04 -->
+    <div class="tlc acc-wrap">
+      <div class="tlci"><div class="bign">04</div>
+        <div class="tper">2021.05 – 2022.05</div>
+        <h3>멀티 플랫폼 입점</h3>
+        <p class="tldesc">무신사, 쿠팡, 카카오메이커스, 조선일보 더비비드 등 40–50대 고객층 공략.</p>
+        <div class="tlres">조선일보 큰 성과 · 브랜드 신뢰도 ↑</div>
+      </div>
+      <button class="acc-btn" onclick="togA(this)"><span class="abl">세부 내용 보기</span><span class="arr">▼</span></button>
+      <div class="acc-body">
+        <ul>
+          <li><b>역할</b> — 브랜딩, 정산, 배송, CS 및 고객관리</li>
+          <li><b>입점</b> — 무신사, 쿠팡, 카카오메이커스, 조선일보 더비비드, 네이버스토어</li>
+          <li><b>성과</b> — 조선일보에서 가장 큰 성과 — 50대 남성·시계 마니아 다수 유입</li>
+          <li><b>배움</b> — 플랫폼마다 고객 페르소나 다름 체감 → 세그먼트 전략의 기반</li>
+        </ul>
+        <div class="acc-note acc-note-d">→ 플랫폼별 고객 특성 데이터가 CRM 세그먼트 전략의 핵심 재료가 됨</div>
+      </div>
+    </div>
+
+    <!-- 05 -->
+    <div class="tlc hl acc-wrap">
+      <div class="tlci"><div class="bign">05</div>
+        <div class="tper">2022.05 – 2025.03</div>
+        <h3>자사 사이트 제작 & AARRR 실행</h3>
+        <p class="tldesc">아임웹 자사몰 직접 제작. 카카오·문자 마케팅, AARRR 전략 전체 기획·실행.</p>
+        <div class="tlres">매출 10배 · 회원가입 11배 증가</div>
+      </div>
+      <button class="acc-btn" onclick="togA(this)"><span class="abl">AS IS → TO BE 보기</span><span class="arr">▼</span></button>
+      <div class="acc-body">
+        <table class="atbl atbl-d">
+          <tr><th>AS IS (기존 문제)</th><th>TO BE (개선 결과)</th></tr>
+          <tr><td>주 고객 45–60세, PC 최적화</td><td>모바일 최적화, PC도 편리하게 개편</td></tr>
+          <tr><td>복잡한 회원가입 → 이탈 발생</td><td>1초 카카오싱크 → 가입 11배 증가</td></tr>
+          <tr><td>SNS 회원가입 연동 없음</td><td>카카오·네이버·구글 소셜 로그인 연동</td></tr>
+          <tr><td>알림톡 자동 발송 불가</td><td>구매·배송·가입 알림톡 자동 발송</td></tr>
+          <tr><td>고객 등급 체계 없음</td><td>SILVER·GOLD·VIP·ROYAL 4단계 구축</td></tr>
+          <tr><td>CS 채널별 분산 관리</td><td>채널톡으로 9개 채널 통합 관리</td></tr>
+        </table>
+        <div class="acc-note acc-note-d">→ 리뉴얼 후 매출 10배 / 회원가입 11배 / 유지비 80%+ 절감</div>
+      </div>
+    </div>
+
+    <!-- 06 -->
+    <div class="tlc hl acc-wrap">
+      <div class="tlci"><div class="bign">06</div>
+        <div class="tper">2022.05 – 2025.03</div>
+        <h3>CRM 마케팅 풀 설계</h3>
+        <p class="tldesc">고객 행동여정·월별 캠페인·등급별 혜택 전체 설계 및 실행.</p>
+        <div class="tlres">월 1.5–2천만원 고정 매출</div>
+      </div>
+      <button class="acc-btn" onclick="togA(this)"><span class="abl">세부 내용 보기</span><span class="arr">▼</span></button>
+      <div class="acc-body">
+        <ul>
+          <li><b>채널</b> — 카카오톡 채널, SMS, 채널톡, 자사몰 팝업·배너</li>
+          <li><b>전략</b> — 온사이드(자사몰 전환) + 오프사이드(외부 재유입) 투트랙</li>
+          <li><b>성과</b> — 자사몰 월 1.5–2천만원 고정 매출 / 2022년 12% → 2024년 ~80%</li>
+          <li><b>성과</b> — ROYAL 등급 충성 고객 지속 증가</li>
+          <li><b>한계</b> — SQL 기반 정밀 세그먼트 도입 전 퇴사 → 다음 직장에서 목표</li>
+        </ul>
+        <div class="acc-note acc-note-d">→ 매출 채널이 와디즈 63% 의존에서 자사몰 80%로 완전히 역전</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ══════ PERSONA ══════ -->
+<section id="persona">
+  <div class="sl">Customer Persona</div>
+  <h2 class="st">우리 고객은 <em>누구인가?</em></h2>
+  <div class="pwrap fi">
+    <div class="pc" onclick="openM('p1')">
+      <div class="pname">김국민</div>
+      <div class="pinfo">50대 남성 · 결혼 / 자녀 2명</div>
+      <div class="ptags"><span class="ptag pg">나를 위한 선물</span><span class="ptag pc2">재구매</span><span class="ptag pl">클래식 시계</span></div>
+      <p class="pdesc">몇 차례 펀딩으로 커스벤을 접해보며 이미 알고 있다. 시계를 사서 일상에 차용해보니 너무 마음에 들고 주변에서도 칭찬을 많이 받아 뿌듯하다. 이번에 승급이 나올 타이밍을 노려 나를 위한 선물을 계획 중이다.</p>
+      <div class="click-lbl" style="position:absolute;bottom:16px;right:18px;font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;display:flex;align-items:center;gap:5px;opacity:.55;color:var(--green);">인사이트 보기 →</div>
+    </div>
+    <div class="pc" onclick="openM('p2')">
+      <div class="pname">이대민</div>
+      <div class="pinfo">40대 남성 · 결혼 / 자녀 없음</div>
+      <div class="ptags"><span class="ptag pg">얼리어답터</span><span class="ptag pc2">가성비</span><span class="ptag pl">직장인</span></div>
+      <p class="pdesc">평소 크라우드 펀딩을 즐겨 참여하는 얼리어답터. 가성비를 중시하지만 제품은 깔끔하게 고르는 편. 직장 미팅에서도 찰 수 있는 시계를 원하며 주기적으로 와디즈에서 물색 중이다.</p>
+      <div class="click-lbl" style="position:absolute;bottom:16px;right:18px;font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;display:flex;align-items:center;gap:5px;opacity:.55;color:var(--green);">인사이트 보기 →</div>
+    </div>
+  </div>
+  <div class="pinsight fi">
+    <div class="iitem"><div class="iv">40–60</div><div class="ik">주 고객 연령대</div></div>
+    <div class="iitem"><div class="iv">남성</div><div class="ik">메인 구매층</div></div>
+    <div class="iitem"><div class="iv">1,300+</div><div class="ik">고객 피드백</div></div>
+    <div class="iitem"><div class="iv">가성비</div><div class="ik">핵심 구매 이유</div></div>
+    <div class="iitem"><div class="iv">선물</div><div class="ik">주요 구매 목적</div></div>
+  </div>
+</section>
+
+<!-- ══════ AARRR ══════ -->
+<section id="aarrr" class="msec">
+  <div class="sl">Growth Framework</div>
+  <h2 class="st">AARRR <em>프레임워크</em></h2>
+  <div class="asteps fi">
+    <div class="astep on"><div class="sl2">A</div><div class="sn">획득</div><div class="ss">잠재고객 유입</div></div>
+    <div class="astep"><div class="sl2">A</div><div class="sn">활성화</div><div class="ss">첫 구매 전환</div></div>
+    <div class="astep"><div class="sl2">R</div><div class="sn">유지</div><div class="ss">반복 구매</div></div>
+    <div class="astep"><div class="sl2">R</div><div class="sn">추천</div><div class="ss">자발적 추천</div></div>
+    <div class="astep"><div class="sl2">R</div><div class="sn">수익</div><div class="ss">LTV 극대화</div></div>
+  </div>
+  <div class="acols fi">
+
+    <div class="acol" onclick="openM('aa1')" style="cursor:pointer;transition:background .2s;position:relative;" onmouseenter="this.style.background='#EFF7EF'" onmouseleave="this.style.background=''">
+      <div class="acoli">
+        <h4>A 획득</h4>
+        <ul><li>네이버 블로그 주 1–2건</li><li>@mycusven 인스타그램</li><li>페이스북·인스타 메타광고</li><li>카피라이팅 작성</li><li>인플루언서 30명 협업</li></ul>
+        <div class="achip">블로그 최고 3,812 조회</div>
+      </div>
+      <div style="padding:10px 16px 14px;font-size:10px;font-weight:700;letter-spacing:1.5px;color:var(--gl);text-transform:uppercase;display:flex;align-items:center;gap:6px;border-top:1px solid rgba(53,94,59,.1);">자세히 보기 →</div>
+    </div>
+
+    <div class="acol" onclick="openM('aa2')" style="cursor:pointer;transition:background .2s;position:relative;" onmouseenter="this.style.background='#EFF7EF'" onmouseleave="this.style.background=''">
+      <div class="acoli">
+        <h4>A 활성화</h4>
+        <ul><li>채널톡 도입·구축</li><li>다양한 결제수단 도입</li><li>1초 카카오싱크 가입</li><li>배송·패키징 개선</li><li>FAQ 전용 페이지 구축</li></ul>
+        <div class="achip">반복문의 75% 감소</div>
+      </div>
+      <div style="padding:10px 16px 14px;font-size:10px;font-weight:700;letter-spacing:1.5px;color:var(--gl);text-transform:uppercase;display:flex;align-items:center;gap:6px;border-top:1px solid rgba(53,94,59,.1);">자세히 보기 →</div>
+    </div>
+
+    <div class="acol" onclick="openM('aa3')" style="cursor:pointer;transition:background .2s;position:relative;" onmouseenter="this.style.background='#EFF7EF'" onmouseleave="this.style.background=''">
+      <div class="acoli">
+        <h4>R 유지</h4>
+        <ul><li>고객 등급별 혜택 제공</li><li>월별 프로모션 캠페인</li><li>신제품 기획·출시</li><li>A/S 진행 재방문 유도</li><li>CRM 마케팅(고민쿠폰)</li></ul>
+        <div class="achip">월별 캠페인으로 재구매율 ↑</div>
+      </div>
+      <div style="padding:10px 16px 14px;font-size:10px;font-weight:700;letter-spacing:1.5px;color:var(--gl);text-transform:uppercase;display:flex;align-items:center;gap:6px;border-top:1px solid rgba(53,94,59,.1);">월별 캠페인 보기 🗓 →</div>
+    </div>
+
+    <div class="acol" onclick="openM('aa4')" style="cursor:pointer;transition:background .2s;position:relative;" onmouseenter="this.style.background='#EFF7EF'" onmouseleave="this.style.background=''">
+      <div class="acoli">
+        <h4>R 추천</h4>
+        <ul><li>브랜드 소개서 A/S·QR 기입</li><li>쇼룸 지인 감사쿠폰</li><li>리뷰·평점 관리</li><li>적립금으로 후기 유도</li><li>선물 시계 카테고리 분류</li></ul>
+        <div class="achip">남편 선물 증가 / 쇼룸↑</div>
+      </div>
+      <div style="padding:10px 16px 14px;font-size:10px;font-weight:700;letter-spacing:1.5px;color:var(--gl);text-transform:uppercase;display:flex;align-items:center;gap:6px;border-top:1px solid rgba(53,94,59,.1);">자세히 보기 →</div>
+    </div>
+
+    <div class="acol" onclick="openM('aa5')" style="cursor:pointer;transition:background .2s;position:relative;" onmouseenter="this.style.background='#EFF7EF'" onmouseleave="this.style.background=''">
+      <div class="acoli">
+        <h4>R 수익</h4>
+        <ul><li>월별 가격전략 최적화</li><li>매년 신제품 출시</li><li>다양한 컬러 가죽밴드 생산</li><li>등급별 차별화 혜택</li><li>감사 손편지 발송</li></ul>
+        <div class="achip">재구매율 ↑ / 고정 매출 발생</div>
+      </div>
+      <div style="padding:10px 16px 14px;font-size:10px;font-weight:700;letter-spacing:1.5px;color:var(--gl);text-transform:uppercase;display:flex;align-items:center;gap:6px;border-top:1px solid rgba(53,94,59,.1);">CROWN 등급 보기 👑 →</div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ══════ SEGMENTATION ══════ -->
+<section id="seg">
+  <div class="sl">CRM Strategy</div>
+  <h2 class="st">고객 세그먼테이션 <em>& CRM 마케팅</em></h2>
+  <div class="sgrid fi">
+    <div class="son" onclick="openM('sg1')">
+      <span class="sbadge">Onsite Marketing</span>
+      <h3>온사이드 마케팅</h3>
+      <p class="sdesc">목표: 첫 방문 → 회원가입 → 첫 구매 전환<br>CRM툴: 카카오싱크, 알림톡, 자사몰 배너·팝업</p>
+      <table class="stbl">
+        <tr><td>회원가입 유도</td><td>회원가입 혜택 배너, 1초 회원가입 / 무료배송·추가할인</td></tr>
+        <tr><td>첫 구매 유도</td><td>장바구니 리마인드, 추가 할인쿠폰 / 오늘만 추가 10%</td></tr>
+        <tr><td>기획전 유입</td><td>시즌별·월별 기획전 배너 / 블프 UP TO 50%</td></tr>
+        <tr><td>채널 추가</td><td>카카오채널 추가 시 1만원 즉시 할인쿠폰</td></tr>
+      </table>
+      <div class="click-lbl">실제 메시지 보기 →</div>
+    </div>
+    <div class="soff" onclick="openM('sg2')">
+      <span class="sbadge">Offsite Marketing</span>
+      <h3>오프사이드 마케팅</h3>
+      <p class="sdesc">목표: 재구매·충성도 강화·자발적 추천 유도<br>CRM툴: 알림톡, SMS, SNS 등 외부 커뮤니케이션</p>
+      <table class="stbl">
+        <tr><td>리텐션 캠페인</td><td>와디즈·조선일보 단골 전용 기획전 / 플랫폼별 맞춤 메시지</td></tr>
+        <tr><td>신상품 안내</td><td>신상 출시 알림 / 오토매틱 시계 첫 공개</td></tr>
+        <tr><td>밴드 리마인드</td><td>착용 3개월 교체 추천 / 계절별 컬러 교체</td></tr>
+        <tr><td>추천 유도</td><td>선물 제안·후기 캠페인 / 남편 선물 시계 1위</td></tr>
+      </table>
+      <div class="click-lbl">실제 메시지 보기 →</div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════ JOURNEY ══════ -->
+<section id="journey" class="dsec">
+  <div class="sl">Customer Journey</div>
+  <h2 class="st">고객 행동 <em>여정 설계</em></h2>
+  <div class="jscroll fi">
+    <table class="jtbl">
+      <thead>
+        <tr><th></th><th>유입</th><th>탐색</th><th class="jhl">장바구니</th><th>회원가입</th><th>구매</th><th>리뷰등록</th><th>재방문</th><th>재구매</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>고객 행동</td>
+          <td>페이스북 보다<br>지인 추천<br>블로그 유입</td>
+          <td>브랜드·상세페이지<br>시계 사양 살펴보기<br>고객 후기 확인</td>
+          <td>마음에 드는 시계<br>장바구니 담기<br>가격 비교 중</td>
+          <td>무료배송·할인<br>A/S 위해<br>적립금 위해</td>
+          <td>시계 구매<br>네이버페이 결제<br>커스터마이징</td>
+          <td>리뷰 적립금<br>솔직한 피드백<br>착용샷 공유</td>
+          <td>A/S·배터리<br>카카오 소식<br>밴드 교체</td>
+          <td>등급 혜택으로<br>새 컬렉션 재구매<br>지인 선물</td>
+        </tr>
+        <tr class="emr">
+          <td>감정</td>
+          <td>😊</td><td>🤔</td><td>😕</td><td>😢</td><td>😊</td><td>😊</td><td>😠</td><td>🥰</td>
+        </tr>
+        <tr>
+          <td>대응책</td>
+          <td><span class="chip">블로그 글</span><span class="chip">후킹 이미지</span><span class="chip">메타광고</span></td>
+          <td><span class="chip">인스타 착용샷</span><span class="chip">고객 후기 상단</span><span class="chip">상세페이지 개선</span></td>
+          <td><span class="chip">추가 할인</span><span class="chip">고민 쿠폰</span></td>
+          <td><span class="chip">1초 카카오싱크</span><span class="chip">혜택 배너</span></td>
+          <td><span class="chip">감사 알림톡</span><span class="chip">네이버페이</span><span class="chip">브로슈어</span></td>
+          <td><span class="chip">리뷰 적립금</span></td>
+          <td><span class="chip">FAQ 자동응답</span><span class="chip">A/S 전용 페이지</span></td>
+          <td><span class="chip">감사 손편지</span><span class="chip">등급 혜택</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <!-- 4 phase modal triggers -->
+  <div class="jphases fi">
+    <div class="jpc" onclick="openM('jn1')">
+      <div class="ji">🔍</div>
+      <h4>탐색 단계 개선</h4>
+      <p>FAQ 구축 → 반복 문의 75% 감소</p>
+      <div class="click-lbl" style="position:absolute;bottom:14px;right:16px;font-size:10px;font-weight:700;color:var(--cream-deep);opacity:.55;">상세 보기 →</div>
+    </div>
+    <div class="jpc" onclick="openM('jn2')">
+      <div class="ji">📦</div>
+      <h4>구매 단계 개선</h4>
+      <p>배송·패키징 전면 개선 → 브랜드 경험 강화</p>
+      <div class="click-lbl" style="position:absolute;bottom:14px;right:16px;font-size:10px;font-weight:700;color:var(--cream-deep);opacity:.55;">상세 보기 →</div>
+    </div>
+    <div class="jpc" onclick="openM('jn3')">
+      <div class="ji">🔧</div>
+      <h4>재방문 단계 개선</h4>
+      <p>A/S 프로세스 구축 → 불만을 신뢰로</p>
+      <div class="click-lbl" style="position:absolute;bottom:14px;right:16px;font-size:10px;font-weight:700;color:var(--cream-deep);opacity:.55;">상세 보기 →</div>
+    </div>
+    <div class="jpc" onclick="openM('jn4')">
+      <div class="ji">🏷️</div>
+      <h4>회원가입 단계 개선</h4>
+      <p>1초 카카오싱크 → 회원가입 11배 증가</p>
+      <div class="click-lbl" style="position:absolute;bottom:14px;right:16px;font-size:10px;font-weight:700;color:var(--cream-deep);opacity:.55;">상세 보기 →</div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════ RESULTS ══════ -->
+<section id="results" class="msec">
+  <div class="sl">Key Results</div>
+  <h2 class="st">주요 <em>성과</em></h2>
+  <div class="rgrid fi">
+    <div class="rc"><div class="ri">🚀</div><div class="rl">자사몰 매출 상승</div><div class="rb">10<em>×</em></div><div class="rd">기존 사이트 대비 자사몰 리뉴얼 후 매출 10배 상승</div></div>
+    <div class="rc"><div class="ri">👥</div><div class="rl">회원가입 증가</div><div class="rb">11<em>×</em></div><div class="rd">1초 카카오싱크 도입 후 회원가입 수 11배 증가</div></div>
+    <div class="rc"><div class="ri">💬</div><div class="rl">반복 문의 감소</div><div class="rb">75<em>%</em></div><div class="rd">FAQ·채널톡 도입으로 반복 문의 75% 감소</div></div>
+    <div class="rc"><div class="ri">💰</div><div class="rl">첫 펀딩 매출</div><div class="rb">1<em>억+</em></div><div class="rd">와디즈 첫 크라우드펀딩 1억 이상 매출 달성</div></div>
+    <div class="rc"><div class="ri">✍️</div><div class="rl">카피라이팅 효과</div><div class="rb">+1307<em>만</em></div><div class="rd">상세페이지 카피 변경만으로 앵콜펀딩 +1,307만원</div></div>
+    <div class="rc"><div class="ri">📅</div><div class="rl">고정 월매출</div><div class="rb">2<em>천만</em></div><div class="rd">자사 사이트 월 1.5–2천만원 고정 매출 발생</div></div>
+  </div>
+  <div class="bbox fi" style="margin-top:4px;">
+    <div class="btitle">매출 채널 비율 변화 — 2022 vs 2024</div>
+    <div class="bcmp">
+      <div><div class="byr">2022년</div>
+        <div class="brow"><span class="bn">와디즈</span><div class="btrack"><div class="bfill bg1" style="width:63%"></div><span class="bpct">63%</span></div></div>
+        <div class="brow"><span class="bn">외부 플랫폼</span><div class="btrack"><div class="bfill bg2" style="width:25%"></div><span class="bpct">25%</span></div></div>
+        <div class="brow"><span class="bn">자사 사이트</span><div class="btrack"><div class="bfill bc" style="width:12%"></div><span class="bpct">12%</span></div></div>
+      </div>
+      <div><div class="byr">2024년</div>
+        <div class="brow"><span class="bn">와디즈</span><div class="btrack"><div class="bfill bg1" style="width:8%"></div><span class="bpct">8%</span></div></div>
+        <div class="brow"><span class="bn">네이버스토어</span><div class="btrack"><div class="bfill bg2" style="width:13%"></div><span class="bpct">13%</span></div></div>
+        <div class="brow"><span class="bn">자사 사이트</span><div class="btrack"><div class="bfill bc" style="width:79%"></div><span class="bpct">~80%</span></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════ EXTRA ══════ -->
+<section id="extra">
+  <div class="sl">Additional Experience</div>
+  <h2 class="st">그 외의 <em>경험</em></h2>
+  <div class="egrid fi">
+
+    <div class="ec acc-wrap">
+      <div class="eci">
+        <span class="ep">2022.05 – 2024.03</span>
+        <h3>오프라인 쇼룸 운영</h3>
+        <ul><li>쇼룸 응대 매뉴얼 제작 및 판매자 교육</li><li>월별 기획전 맞춤 디스플레이 배치</li><li>죽은 공간 분석 후 매출 방안 PPT 적용</li><li>성수 공간 와디즈 전시 기획</li><li>청량리 롯데백화점 플린트 전시</li></ul>
+        <div class="ecres">쇼룸 재방문 증가 / 지인 추천 유입 활성화</div>
+      </div>
+      <button class="acc-btn-l" onclick="togA(this)"><span class="abl">상세 내용 보기</span><span class="arr">▼</span></button>
+      <div class="acc-body-l">
+        <ul>
+          <li><b>매뉴얼</b> — 컬렉션별 판매 포인트·고객 연령층·사용 방법·커스터마이징 안내 정리</li>
+          <li><b>교육</b> — 판매자 응대 교육 (인사·안내·설명·결제 동선 체크)</li>
+          <li><b>분석</b> — 죽은 공간 분석 후 PPT로 개선 방안 정리 → 실제 적용</li>
+          <li><b>전시</b> — 성수 공간 와디즈 시연회 기획·운영 / 롯데백화점 플린트 스토어 입점</li>
+          <li><b>지역</b> — 건물 주변 근무자 특별 할인 / 이사 입주 기념 안내 / 지인 소개 쿠폰 운영</li>
+        </ul>
+      </div>
+      <div class="ecbg">A</div>
+    </div>
+
+    <div class="ec acc-wrap">
+      <div class="eci">
+        <span class="ep">2022.05 – 2024.03</span>
+        <h3>네이버스토어 운영</h3>
+        <ul><li>시계별 키워드·SEO 최적화 → 쇼핑 상위 노출</li><li>40–50대 접근 편의성 확보</li><li>네이버페이 결제·포인트 적립 도입</li><li>월별 기획전에 따라 상세페이지 변경</li><li>밴드·디버클 단품 100개+ 판매</li></ul>
+        <div class="ecres">시계 키워드 상위 노출 / 결제수단 다양화</div>
+      </div>
+      <button class="acc-btn-l" onclick="togA(this)"><span class="abl">상세 내용 보기</span><span class="arr">▼</span></button>
+      <div class="acc-body-l">
+        <ul>
+          <li><b>목적</b> — 40–50대 주 고객이 네이버 검색 시 상위 노출 확보</li>
+          <li><b>SEO</b> — 시계별 키워드 분석 후 상세페이지 최적화, 쇼핑 검색 상위 노출</li>
+          <li><b>결제</b> — 전체 결제의 17% 네이버페이 사용, 포인트 적립 선호 고객층 공략</li>
+          <li><b>운영</b> — 월별 기획전에 맞게 상세페이지·배너·할인율 실시간 변경</li>
+          <li><b>성과</b> — 밴드·디버클 단품 100개+ 판매 / 자사몰 미도달 고객층 확보</li>
+        </ul>
+      </div>
+      <div class="ecbg">B</div>
+    </div>
+
+    <div class="ec acc-wrap">
+      <div class="eci">
+        <span class="ep">전 기간</span>
+        <h3>CS 고객 응대</h3>
+        <ul><li>빠른 응대로 고객 만족도 높음</li><li>채널톡으로 9개 채널 통합 관리</li><li>VOC 분석 후 FAQ·자동응답 구축</li><li>배송 오류·A/S 즉각 대응</li><li>반복 문의 75% 감소</li></ul>
+        <div class="ecres">#빠르다 #친절하다 #처리만족</div>
+      </div>
+      <button class="acc-btn-l" onclick="togA(this)"><span class="abl">실제 고객 후기 보기 💬</span><span class="arr">▼</span></button>
+      <div class="acc-body-l">
+        <ul>
+          <li>"상담하는데 빠르고 친절해서 좋았습니다. 제품을 팔아먹고 끝내는 게 아니라 고객을 생각해주는 마음이 느껴져서 좋았습니다." — 네이버 리뷰</li>
+          <li>"너무 친절하게 잘 응대해주셔서 감사합니다~ 재펀딩해요!" — KANAME, 와디즈</li>
+          <li>"궁금했던 질문사항이나 요청사항에 대해 답변도 친절하고 정확히 도움이 되었습니다." — 임*재, 와디즈</li>
+          <li>"충성고객도 잘 케어해주고 있으셔서 계속해서 브랜드가 번창하길 바랍니다!" — Kaname, 와디즈</li>
+          <li>"살짝 안맞는 부분이 있었는데 엄청 친절하게 잘 해주셨습니다." — 레마누, 와디즈</li>
+        </ul>
+        <div class="acc-note acc-note-l">→ 관리 채널: 전화 / 문자 / 이메일 / 카카오 / 아임웹 / 인스타DM / 페이스북 / 네이버톡톡 / 와디즈</div>
+      </div>
+      <div class="ecbg">C</div>
+    </div>
+
+  </div>
+</section>
+
+<footer>
+  <div><div class="ftname">경<em>예은</em><br>CRM PORTFOLIO</div></div>
+  <div class="ftr">
+    <div class="ftsub">5년 6개월 · 커스벤 워치브랜드</div>
+    <p>고객 페르소나 설계 · AARRR 프레임워크<br>CRM 마케팅 · 고객 행동 여정 설계<br>자사몰 구축 · 채널톡 · 카카오 마케팅</p>
+  </div>
+</footer>
+
+<!-- ══════ MODAL DATA ══════ -->
+<script>
+const MD={
+aa1:{tag:'AARRR · 획득',title:'A — 고객 획득 전략',dark:false,html:`
+<p>잠재 고객을 자사 채널로 유입시키는 단계. 블로그·SNS·광고·커뮤니티·인플루언서 5가지 채널을 병행 운영했습니다.</p>
+<div class="mg3">
+  <div class="mc"><h4>블로그 운영</h4><ul><li>시계 키워드 분석 후 주 1–2건 발행</li><li>최고 조회수 3,812 / 이웃 1,060명 달성</li><li>커스벤 스토리·제품 소개 콘텐츠</li><li>쇼핑 검색 연동으로 자연 유입</li></ul></div>
+  <div class="mc"><h4>SNS & 광고</h4><ul><li>@mycusven 인스타그램 운영</li><li>페이스북·인스타 메타광고 직접 집행</li><li>타겟: 40–50대 남성 / 시계 관심사</li><li>후킹 이미지 A/B 테스트 진행</li></ul></div>
+  <div class="mc"><h4>인플루언서 & 커뮤니티</h4><ul><li>인플루언서 30명 협업</li><li>착용 후기·언박싱 콘텐츠 제작</li><li>남차 카페 등 남성 패션 커뮤니티 홍보</li><li>시계 마니아 커뮤니티 타겟 홍보</li></ul></div>
+</div>
+<div class="mnote">→ 메타광고 + 블로그 조합이 가장 효율적인 전환율 기록</div>`},
+
+aa2:{tag:'AARRR · 활성화',title:'A — 고객 활성화 전략',dark:false,html:`
+<p>처음 방문한 고객을 회원가입 → 첫 구매로 전환시키는 단계. 가장 ROI가 높았던 단계입니다.</p>
+<div class="mg3">
+  <div class="mc"><h4>회원가입 최적화</h4><ul><li>1초 카카오싱크 → 가입 11배 증가</li><li>카카오 회원가입 비율 70%+ 달성</li><li>카카오·네이버·구글 소셜 로그인 연동</li><li>회원가입 혜택 배너 상단 노출</li></ul></div>
+  <div class="mc"><h4>결제 & UX 개선</h4><ul><li>네이버페이·카카오페이·토스 도입</li><li>전체 결제의 17% 네이버페이 사용</li><li>CTA 버튼·장바구니 위치 최적화</li><li>모바일 UX 전면 개편</li></ul></div>
+  <div class="mc"><h4>자동화 & FAQ</h4><ul><li>채널톡 9개 채널 통합·워크플로우 구축</li><li>VOC 분석 후 FAQ 18가지 정리</li><li>FAQ 전용 페이지 + 채널톡 자동응답</li><li>구매·배송 자동 알림톡 발송 설정</li></ul></div>
+</div>
+<div class="mnote">→ 최고 ROI: 카카오싱크 (가입 11배) + FAQ 구축 (반복문의 75% 감소)</div>`},
+
+aa3:{tag:'AARRR · 유지',title:'R — 고객 유지 전략 · 월별 캠페인',dark:false,html:`
+<p>구매한 고객을 재구매로 이어지게 만드는 단계. 1–12월 월별 테마 기획전을 설계·실행했습니다.</p>
+<table class="mtbl">
+  <tr><th>월</th><th>기획전명</th><th>핵심 혜택</th></tr>
+  <tr><td>1–2월</td><td>새해 갤러포드 기획전</td><td>한 해를 열심히 일할 나에게 선물하세요</td></tr>
+  <tr><td>3월</td><td>봄 기획전</td><td>봄에 가장 인기 많은 시계 4종 20% 할인</td></tr>
+  <tr><td>4–5월</td><td>가정의 달 기획전</td><td>무료 각인 + 다이얼 교체 + 회원가입 혜택</td></tr>
+  <tr><td>6월</td><td>나에게 주는 상 — 크레스비</td><td>30개 한정 20% + 밴드 1개 추가 + 무료 각인</td></tr>
+  <tr><td>7월</td><td>커스벤 6주년 SALE</td><td>기념일별 1위 추천 / 최대 50% 할인</td></tr>
+  <tr><td>8월</td><td>여름 휴가 기획전</td><td>단 하나뿐인 시계 / 방수 밴드 추천</td></tr>
+  <tr><td>9월</td><td>올해 수고한 당신께</td><td>최대 20% 쿠폰 + 무료배송</td></tr>
+  <tr><td>10월</td><td>결혼기념일 기획전</td><td>커스텀 + 무료 각인 + 편지 인쇄 + 밴드 2개</td></tr>
+  <tr><td>11월</td><td>블랙프라이데이</td><td>1년에 단 한 번 / 최대 60% 할인</td></tr>
+  <tr><td>12월</td><td>크리스마스 기획전</td><td>1년 동안 수고한 당신께 / 연말 선물 특가</td></tr>
+</table>
+<div class="mnote">→ 월별 캠페인으로 계절·시즌 매출 기복 최소화 및 고정 매출 기반 확보</div>`},
+
+aa4:{tag:'AARRR · 추천',title:'R — 고객 추천 전략',dark:false,html:`
+<p>만족한 고객이 자발적으로 주변에 추천하도록 유도하는 단계. 패키징 경험과 리뷰 인센티브가 핵심입니다.</p>
+<div class="mg3">
+  <div class="mc"><h4>패키징 & 언박싱</h4><ul><li>브랜드 브로슈어 동봉 (A/S 안내 포함)</li><li>컬렉션별 사용 설명서 제작</li><li>브랜드 전용 스티커·손편지 삽입</li><li>선물 느낌 강화로 SNS 공유 유도</li></ul></div>
+  <div class="mc"><h4>리뷰 & 후기 관리</h4><ul><li>구매 후 리뷰 작성 시 적립금 지급</li><li>알림톡으로 리뷰 작성 안내 자동 발송</li><li>인스타 착용샷 태그 이벤트 정기 진행</li><li>부정 리뷰 즉각 CS 대응</li></ul></div>
+  <div class="mc"><h4>선물 카테고리 마케팅</h4><ul><li>"남편에게 선물하기" 카테고리 구성</li><li>"아버지 생신 선물" 카테고리 구성</li><li>쇼룸 지인 데려오면 추가 할인 쿠폰</li><li>소개서에 사이트 QR 코드 기입</li></ul></div>
+</div>
+<div class="mnote">→ "남편 선물로 시계 샀어요" 후기 증가 → 자연스러운 입소문 마케팅 효과</div>`},
+
+aa5:{tag:'AARRR · 수익',title:'R — 수익 극대화 · CROWN 멤버십',dark:false,html:`
+<p>충성 고객의 LTV를 높이고 지속적인 수익을 만드는 단계. CROWN 멤버십 등급 시스템이 핵심입니다.</p>
+<table class="mtbl">
+  <tr><th>등급</th><th>조건 (누적 구매)</th><th>혜택</th></tr>
+  <tr><td>SILVER</td><td>30만 – 60만원</td><td>20만원 이상 구매 시 3만원 즉시 할인 / 적립금 / 무료배송</td></tr>
+  <tr><td>GOLD</td><td>60만 – 90만원</td><td>4만원 즉시 할인 / 적립금 / 무료배송</td></tr>
+  <tr><td>VIP</td><td>90만 – 150만원</td><td>5만원 할인 / 밴드 1개 증정 / 신제품 우선 연락 / 무료배송</td></tr>
+  <tr><td>ROYAL</td><td>150만원 이상</td><td>8만원 할인 / 밴드 증정 / 신제품 평가회 참여 / A/S 무료 / 무료배송</td></tr>
+</table>
+<div class="mdiv"></div>
+<div class="mg2">
+  <div class="mc"><h4>추가 수익 전략</h4><ul><li>매년 신제품 출시로 재구매 사이클 생성</li><li>다양한 컬러 가죽밴드 단품 판매</li><li>밴드·디버클 단품 100개+ 판매</li><li>월별 가격전략 최적화</li></ul></div>
+  <div class="mc"><h4>성과</h4><ul><li>자사몰 월 1.5–2천만원 고정 매출</li><li>ROYAL 등급 충성 고객 지속 증가</li><li>재구매율 꾸준히 상승</li><li>2022년 자사몰 12% → 2024년 ~80%</li></ul></div>
+</div>
+<div class="mnote">→ 등급 혜택 도입 이후 재구매율 상승, ROYAL 등급 충성 고객 증가세 뚜렷</div>`},
+
+p1:{tag:'Customer Persona · 01',title:'김국민 — 50대 재구매 충성 고객',dark:false,html:`
+<div class="mg3">
+  <div class="mc"><h4>기본 정보</h4><ul><li>50대 남성</li><li>결혼 / 자녀 2명</li><li>직장인 (관리직·임원)</li><li>클래식·스포티 디자인 선호</li></ul></div>
+  <div class="mc"><h4>구매 동기</h4><ul><li>나를 위한 선물 (승급·기념일)</li><li>오랫동안 원했던 시계</li><li>주변 착용자에게 칭찬 받은 경험</li><li>직장·미팅에서 차기 좋은 디자인</li></ul></div>
+  <div class="mc"><h4>CRM 공략 포인트</h4><ul><li>등급 혜택 안내 — ROYAL 등급 쿠폰</li><li>신제품 출시 우선 알림</li><li>재구매 시 감사 손편지 동봉</li><li>핵심 메시지: <b>"나에게 주는 선물"</b></li></ul></div>
+</div>
+<div class="mdiv"></div>
+<div class="msec-title">실제 고객 후기</div>
+<div class="mg2">
+  <div class="mc"><ul><li>"주변에서 칭찬을 많이 받아 뿌듯하다"</li><li>"나를 위한 선물로 딱이다"</li><li>"이 가격에 이 퀄리티라니 놀랍다"</li></ul></div>
+  <div class="mc"><ul><li>"충성고객도 잘 케어해줘서 계속 재구매"</li><li>"A/S까지 빠르게 처리해줘서 믿음직스럽다"</li></ul></div>
+</div>
+<div class="mnote">→ 이 페르소나가 ROYAL 등급 충성 고객으로 성장하는 핵심 타겟</div>`},
+
+p2:{tag:'Customer Persona · 02',title:'이대민 — 40대 얼리어답터',dark:false,html:`
+<div class="mg3">
+  <div class="mc"><h4>기본 정보</h4><ul><li>40대 남성</li><li>결혼 / 자녀 없음</li><li>직장인 (일반직)</li><li>크라우드펀딩 즐겨 참여</li></ul></div>
+  <div class="mc"><h4>구매 동기</h4><ul><li>새로운 제품 얼리 체험</li><li><b>이 가격에 이 퀄리티</b> — 가성비</li><li>남들과 다른 커스터마이징 시계</li><li>직장 미팅에서도 찰 수 있는 디자인</li></ul></div>
+  <div class="mc"><h4>CRM 공략 포인트</h4><ul><li>신제품 출시 알림 + 얼리버드 혜택</li><li>한정 수량 강조</li><li>커스터마이징 옵션 안내</li><li>핵심 메시지: <b>"남들과 다른 나만의 시계"</b></li></ul></div>
+</div>
+<div class="mdiv"></div>
+<div class="msec-title">실제 고객 후기</div>
+<div class="mg2">
+  <div class="mc"><ul><li>"이 가격에 이 퀄리티라니 놀랍다"</li><li>"커스터마이징이 최고 강점"</li></ul></div>
+  <div class="mc"><ul><li>"다음 신제품도 꼭 구매할 것 같다"</li><li>"남차 카페에서 보고 바로 구매했다"</li></ul></div>
+</div>
+<div class="mnote">→ 와디즈 → 자사 사이트 전환율 높이기 위해 가장 공을 들인 페르소나</div>`},
+
+sg1:{tag:'CRM · Onsite Marketing',title:'온사이드 — 실제 발송 CRM 메시지',dark:true,html:`
+<p>자사 사이트 방문자를 <strong>회원가입 → 첫 구매</strong>로 전환시키는 온사이드 캠페인 실제 메시지입니다.</p>
+<div class="msg-grid">
+  <div class="msgc msgc-d"><div class="msgt">회원가입 유도</div><p>커스벤 시계, 관심있으신가요?😊 회원가입하시면 더 많은 혜택들을 더 풍성하게 받아보실 수 있습니다♥</p></div>
+  <div class="msgc msgc-d"><div class="msgt">장바구니 리마인드</div><p>혹시 시계 구매 고민 중이신가요? 장바구니에 넣고 고민 중이신 당신께 10% 추가할인쿠폰을 드립니다:) 쿠폰함을 열어보세요!</p></div>
+  <div class="msgc msgc-d"><div class="msgt">채널 추가 감사</div><p>CUSVEN(커스벤) 채널을 추가해 주셔서 감사합니다 🙏 앞으로 다양한 소식과 혜택/정보를 메시지로 받아보실 수 있습니다.</p></div>
+  <div class="msgc msgc-d"><div class="msgt">상황 마케팅 (폭설 쿠폰)</div><p>폭설 내린 주 고민 많으셨어요. 따뜻한 쇼핑 되세요! 3일만 사용 가능한 5% 추가 할인쿠폰이 지급되었습니다.</p></div>
+</div>
+<div class="mdiv"></div>
+<div class="mg3">
+  <div class="mc"><h4>회원가입 전환 전략</h4><ul><li>1초 카카오싱크 → 가입 11배 증가</li><li>가입 즉시 웰컴 쿠폰 지급</li><li>혜택 배너 상단 상시 노출</li></ul></div>
+  <div class="mc"><h4>첫 구매 전환 전략</h4><ul><li>장바구니 리마인드 자동 발송</li><li>오늘만 추가 10% 할인 쿠폰</li><li>채널톡 실시간 상담 연결</li></ul></div>
+  <div class="mc"><h4>카카오 채널 추가 유도</h4><ul><li>채널 추가 시 1만원 즉시 할인</li><li>카카오 채널 = CRM 접점 자동 확보</li><li>클릭 순위 1위: 홈페이지, 2위: 와디즈</li></ul></div>
+</div>
+<div class="mnote">→ 카카오 채널 추가 고객 대상 CRM 메시지 오픈율이 일반 대비 3배 이상 높음</div>`},
+
+sg2:{tag:'CRM · Offsite Marketing',title:'오프사이드 — 실제 발송 CRM 메시지',dark:false,html:`
+<p>외부 플랫폼(와디즈·조선일보 등) 기존 고객을 자사 사이트로 <b>재유입·재구매</b>시키는 실제 문자 메시지입니다.</p>
+<div class="msg-grid">
+  <div class="msgc msgc-l"><div class="msgt">와디즈 고객 전용</div><p>안녕하세요 커스벤입니다. (이 문자는 와디즈 고객님께만 보내드립니다.) 리뉴얼된 커스벤 사이트에 회원가입 하시면 쉽게 AS를 받으실 수 있으며 등급별 혜택까지 제공됩니다.</p></div>
+  <div class="msgc msgc-l"><div class="msgt">재구매 유도 (5주년)</div><p>(광고)[커스벤 5주년 SALE] ~7.3일까지만 최대 50% 세일. 다가오는 여름, 가벼워진 옷차림에 빛나는 시계로 완성해보세요.</p></div>
+  <div class="msgc msgc-l"><div class="msgt">혜택 종료 D-1</div><p>커스벤 할인혜택 종료 D-1 알림. 회원가입 시 AS / 등급 별 혜택 / 가족 밴드 15,000원 / 티스톤 시계 60% 할인 혜택이 내일 종료됩니다.</p></div>
+  <div class="msgc msgc-l"><div class="msgt">조선일보 고객 자사 유입</div><p>커스벤X조선일보 고객 단독 혜택 — 리뉴얼된 커스벤 사이트에 회원가입 하시면 앞으로 쉽게 AS를 받으실 수 있으며 등급별 혜택까지 제공해드립니다.</p></div>
+</div>
+<div class="mdiv"></div>
+<div class="mg2">
+  <div class="mc"><h4>세그먼트별 맞춤 전략</h4><ul><li><b>와디즈 고객</b> — "이 문자는 와디즈 고객님께만" 개인화</li><li><b>조선일보 고객</b> — 신뢰도 높은 고객층 자사몰 유입</li><li><b>이탈 위험 고객</b> — D-1 긴급 혜택 알림</li><li><b>장기 미접속</b> — 고민쿠폰 발송</li></ul></div>
+  <div class="mc"><h4>성과 & 한계</h4><ul><li>초기 자사몰 데이터 부족 → 오프사이드 중심 운영</li><li>외부 → 자사몰 전환이 핵심 KPI</li><li>자사몰 매출 비율 12% → 80%로 성장</li><li>SQL 기반 정밀 세그먼트 도입 필요성 인식</li></ul></div>
+</div>
+<div class="mnote">→ 플랫폼별 맞춤 메시지 발송 → 자사몰 전환율 꾸준히 향상</div>`},
+
+jn1:{tag:'Journey · 탐색 단계',title:'FAQ 구축 — 반복 문의 75% 감소',dark:true,html:`
+<p>고객 탐색 단계에서 가장 많이 겪는 불편은 <strong>정보 탐색의 어려움</strong>. VOC 분석을 통해 FAQ 18가지를 정리하고 자동 응답 시스템을 구축했습니다.</p>
+<div class="mg3">
+  <div class="mc"><h4>자주 묻는 질문 유형</h4><ul><li>밴드 사이즈(길이, 폭) 궁금합니다</li><li>워터프루프 밴드와 일반 밴드 차이</li><li>다크블루·라이트블루 컬러 차이</li><li>컬렉션별 방수 등급 궁금합니다</li><li>날짜/요일 변경 방법</li><li>쿼츠와 오토매틱(기계식) 차이</li><li>커스터마이징 어떻게 하나요?</li><li>시계 사이즈, 두께, 무게</li></ul></div>
+  <div class="mc"><h4>FAQ 도입 결과</h4><ul><li>사이트 내 FAQ 전용 페이지 신설</li><li>메인 메뉴에 FAQ 별도 배치</li><li>채널톡 자동 FAQ 발송 워크플로우 구축</li><li>커스텀 메뉴: 사용자수 220 / 클릭수 459</li><li>단순·반복 문의 75%+ 감소</li></ul></div>
+  <div class="mc"><h4>카카오 채널 클릭 순위</h4><ul><li>1위 — 홈페이지</li><li>2위 — 와디즈 펀딩 링크</li><li>3위 — A/S 안내</li><li>4위 — 밴드 구매</li><li>5위 — FAQ</li><li>6위 — 쇼룸 공지</li></ul></div>
+</div>
+<div class="mnote">→ FAQ 구축 후 반복 문의 75% 감소 / CS 리소스를 더 가치 있는 업무에 집중 가능</div>`},
+
+jn2:{tag:'Journey · 구매 단계',title:'배송·패키징 개선 — 브랜드 경험 강화',dark:true,html:`
+<p>비싼 시계를 구매했는데 <strong>포장이 허술하게 도착</strong>하는 문제. CX 피드백을 직접 취합해 패키징 전 과정을 재설계했습니다.</p>
+<div class="mg2">
+  <div class="mc"><h4>Before → After 개선 내역</h4><ul><li><b>문제</b> — 택배 상자 찢어져 도착 → 고객 컴플레인</li><li><b>개선</b> — 택배사에 "안전하게 배송 부탁드려요" 문구 기입</li><li><b>문제</b> — 일반 OPP 박스테이프 사용</li><li><b>개선</b> — 브랜드 전용 스티커로 교체</li><li><b>문제</b> — 시계 크기에 맞지 않는 택배상자</li><li><b>개선</b> — 커스벤 시계에 딱 맞는 맞춤 택배상자 제작</li><li><b>추가</b> — 상자 앞면에 자사 사이트 주소 기재 (재유입 유도)</li></ul></div>
+  <div class="mc"><h4>동봉 제작물</h4><ul><li>브랜드 브로슈어 — 스토리·A/S 안내 포함</li><li>컬렉션·무브먼트별 사용 설명서 제작</li><li>디버클 사용설명서 촬영 및 제작</li><li>시계 안내 영상 QR 코드 동봉</li><li>재구매 고객 감사 손편지 삽입</li><li>브랜드 스티커 패키지 제작</li></ul></div>
+</div>
+<div class="mnote">→ 패키징 개선 후 "언박싱이 선물 같다"는 후기 증가 / SNS 공유 유도 효과</div>`},
+
+jn3:{tag:'Journey · 재방문 단계',title:'A/S 프로세스 구축 — 불만을 신뢰로',dark:true,html:`
+<p>A/S 문의가 지속 발생하고, 구매 전 A/S 가능 여부를 확인하려는 고객이 많았습니다. 온라인 A/S 접수 시스템을 전면 구축했습니다.</p>
+<div class="mg3">
+  <div class="mc"><h4>문제 상황 (Before)</h4><ul><li>A/S 관련 문의 지속 → 응대 부담 증가</li><li>구매 전 A/S 가능 여부 확인 고객 다수</li><li>별도 안내 페이지 없어 접근성 낮음</li><li>A/S 진행 상황 알 수 없어 불안감 호소</li></ul></div>
+  <div class="mc"><h4>개선 내용 (After)</h4><ul><li>사이트 내 A/S 전용 페이지 신설</li><li>메인 메뉴에 A/S 별도 배치</li><li>온라인 접수 시스템 구축</li><li>진행 단계별 문자 자동 발송</li><li>A/S 완료 보증서 제작 후 배송</li></ul></div>
+  <div class="mc"><h4>A/S 진행 알림 단계</h4><ul><li>1단계 — 수거 안내 문자 발송</li><li>2단계 — A/S 진행 중 안내</li><li>3단계 — 완료 + 배송 안내</li><li>완료 보증서 — 기간·비용·내용 기재</li></ul></div>
+</div>
+<div class="mnote">→ A/S 구축 후 고객 불만 건수 감소 / 재방문율 향상 / "A/S가 빠르다" 후기 증가</div>`},
+
+jn4:{tag:'Journey · 회원가입 단계',title:'1초 카카오싱크 — 회원가입 11배 증가',dark:true,html:`
+<p>주 고객 45–60세가 <strong>복잡한 회원가입</strong>에서 이탈하는 문제. 1초 카카오싱크 도입으로 11배 증가를 달성했습니다.</p>
+<div class="mg2">
+  <div class="mc"><h4>AS IS → TO BE</h4><ul><li><b>Before</b> — 복잡한 이메일 가입 → 이탈 발생</li><li><b>After</b> — 1초 카카오싱크 소셜 로그인 도입</li><li><b>Before</b> — SNS 로그인 연동 없음</li><li><b>After</b> — 카카오·네이버·구글 전부 연동</li><li><b>Before</b> — 가입 후 아무 혜택 없음</li><li><b>After</b> — 웰컴 쿠폰 + 알림톡 자동 발송</li></ul></div>
+  <div class="mc"><h4>도입 성과</h4><ul><li>전체 회원가입 수 <b>11배 증가</b></li><li>카카오 회원가입 비율 <b>70%+ 달성</b></li><li>카카오 채널 = CRM 접점 자동 확보</li><li>네이버페이 결제 비율 17%까지 상승</li><li>모바일 전환율 대폭 향상</li><li>주 고객 45–60대 접근성 대폭 개선</li></ul></div>
+</div>
+<div class="mnote">→ 1초 카카오싱크 하나로 회원가입 11배 — 가장 ROI 높은 단일 개선</div>`}
+};
+
+function openM(id){
+  const d=MD[id]; if(!d) return;
+  const mb=document.getElementById('mb');
+  mb.className='mbox '+(d.dark?'mbox-d':'mbox-l');
+  document.getElementById('mtag').textContent=d.tag;
+  document.getElementById('mttl').textContent=d.title;
+  document.getElementById('mcont').innerHTML=d.html;
+  document.getElementById('mo').classList.add('on');
+  document.body.style.overflow='hidden';
+  mb.scrollTop=0;
+}
+function closeM(){document.getElementById('mo').classList.remove('on');document.body.style.overflow='';}
+function mClose(e){if(e.target===document.getElementById('mo')) closeM();}
+document.addEventListener('keydown',e=>{if(e.key==='Escape') closeM();});
+
+// accordion
+function togA(btn){
+  const panel=btn.nextElementSibling;
+  const open=panel.classList.contains('open');
+  panel.classList.toggle('open',!open);
+  btn.classList.toggle('open',!open);
+}
+
+// scroll fade
+const obs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('vis');});},{threshold:.06});
+document.querySelectorAll('.fi').forEach(el=>obs.observe(el));
+
+// aarrr hover
+document.querySelectorAll('.astep').forEach(s=>{
+  s.addEventListener('mouseenter',()=>{document.querySelectorAll('.astep').forEach(x=>x.classList.remove('on'));s.classList.add('on');});
+});
+</script>
+</body>
+</html>
